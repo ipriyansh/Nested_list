@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Nested Listing</title>
+</head>
+<body>
+<ul>
+<li class="li-element" data-next-iteration="A">A</li>
+<li class="li-element" data-next-iteration="B">B</li>
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(".li-element").click(function(){
+
+var nextIteration = $(this).data('next-iteration');
+
+var currentLiElementLength = $(this).children("li").length;
+var nestedHtmlElement = '<ul>';
+for(let temp=0; temp < currentLiElementLength + 1; temp++){
+let liSeries = temp + 1;
+	nestedHtmlElement+= '<li class="li-element" data-next-iteration='+nextIteration+liSeries+'">'+nextIteration+liSeries+'</li>';
+
+}
+nestedHtmlElement+='</ul>';
+
+$(this).append(nestedHtmlElement);
+})
+</script>
+</body>
+</html>
